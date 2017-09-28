@@ -1,32 +1,35 @@
 def length_of_longest_substring(s)
   return 0 if s == ""
   ary = s.split('')
+  n = 0
   subs = []
-  dups = []
-  i = 0
-  x = 0
-  ary.each do |e|
-    next if dups.include?(e)
-    if ary.count(e) > 1
-      dups << e
-      x += 1
-      until dups.include?(ary[i+=1]) || i > ary.length - 1
-        dups << e if ary.count(ary[i]) > 1
-        x += 1
+  con = []
+  ary.each_with_index do |e, i|
+    (ary.length).times do
+      break if i > ary.length - 1
+      if con.uniq.length != con.length
+        n -= 1
+        subs << n
+        n = 0
+        con = []
+        break
+      else
+        con << ary[i]
+        i += 1
+        n += 1
       end
-      subs << x
-      x = 0
-    else
-      x += 1
-      i += 1
     end
   end
-  subs << x if x != 0
-  subs = [1] if subs.empty?
+  if subs.empty?
+    subs << ary.length
+  end
+  if subs.max == 1 && subs[-2..-1].uniq.length == subs[-2..-1].length
+    subs << 2
+  end
   subs.max
 end
 
-print length_of_longest_substring("abba")
+length_of_longest_substring("adfdafq")
 
 #alph = ("a".."z").to_a
 
