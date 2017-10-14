@@ -1,4 +1,4 @@
-# Finds the fibonacci sequence up to n numbers using dynamic programming
+# Finds the fibonacci sequence up to n numbers using memoization
 
 def fib(n, memo)
   if n <= 0
