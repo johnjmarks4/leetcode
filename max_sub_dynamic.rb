@@ -6,7 +6,7 @@ def max_sub_array(ary)
   max_num = 0
 
   table.each_with_index do |_, pos|
-    [ary, ary.reverse].each do |ary| #speed up by eliminating this
+    [ary, ary.reverse].each do |ary| #speed up by eliminating this - put ary on outside?
       total, max_num = 0, 0
       ary[pos..-1].each do |num|
         total += num
