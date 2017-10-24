@@ -37,7 +37,7 @@ def expanding_center(string)
   middle = string[(string.length / 2) - 2..(string.length / 2) + 2]
   pals << middle if middle[0] == middle[-1]
 
-  pals.max_by(&:length)
+  pals.max_by(&:length) #change so it just stores longest string rather than array
 end
 
 def benchmark(run, string)

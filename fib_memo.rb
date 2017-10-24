@@ -1,3 +1,5 @@
+require 'benchmark'
+
 # Finds the fibonacci sequence up to n numbers using memoization
 
 def fib(n, memo)
@@ -16,6 +18,10 @@ end
 
 memo = [1]
 
+print fib(35, memo)
+#print Benchmark.measure { fib(35, memo) }
+
+=begin
 loop do
   number = gets.chomp!.to_i
   result = fib(number, memo)
@@ -23,3 +29,5 @@ loop do
   puts "The fibonacci sequence up to #{number} numbers:"
   puts memo[0..number-1].inspect
 end
+
+=end
